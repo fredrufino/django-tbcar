@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Mensalistas
+{% endblock %}
+
+{% block main %}
+    <h3>Lista Mensalista</h3>
+    {% for i in dados %}
+
+    Veículo: {{ i.id_Veiculo }}<br>
+
+    Tarifa: {{ i.id_Tabela }}<br>
+
+    {% if i.data_pagamento %}
+       Data de Pagamento : {{ i.data_pagamento }}<br>
+    {% else %}
+        Data de Pagamento: <br>
+    {% endif %}
+
+    Forma de Pagamento: {{ i.forma_pagamento }}<br>
+
+    {% if i.observacoes %}
+        Observações: {{ i.observacoes }}<br>
+    {% else %}
+        Observações: <br>
+    {% endif %}
+
+
+<a href="/atualiza_mensalista/{{ i.id }}">Editar</a>
+<a href="/exclua_mensalista/{{ i.id }}">Excluir</a> <br>
+    ------------------------------------------------<br>
+
+    {% endfor %}
+
+    <button onclick="location.href='/'">Voltar</button>
+
+{% endblock %}

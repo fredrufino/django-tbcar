@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Lista Fabricantes
+{% endblock %}
+
+{% block main %}
+    {% for i in dados %}
+    Fabricante: {{i.descricao}} <br>
+
+    <a href="/altera_fabricante/{{ i.id }}/">Editar</a>
+    <a href="/exclua_fabricante/{{ i.id }}/">Excluir</a> <br>
+-------------------------------------<br>
+<br>
+    {% endfor %}
+
+{% endblock %}

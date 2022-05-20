@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Rotativo
+{% endblock %}
+
+{% block main %}
+    <h3 style="text-align: center;">Lista de Rotativo</h3>
+    <ul class="list-group">
+        {% for i in dados %}
+        <li class="list-group-item">
+            <p><a style="font-weight: bolder;">Veículo:</a> {{ i.id_Veiculo }}</p>
+            <p><a style="font-weight: bolder;">Tarifa:</a> {{ i.id_Tabela }}</p>
+            <p><a style="font-weight: bolder;">Data Entrada:</a> {{ i.data_entrada }}</p>
+
+        {% if i.data_saida %}
+            <p><a style="font-weight: bolder;">Data de Saída:</a> {{ i.data_saida }}</p>
+        {% else %}
+            <p><a style="font-weight: bolder;">Data de Saída:</a> </p>
+        {% endif %}
+
+        {% if i.total %}
+            <p><a style="font-weight: bolder;">Total:</a> {{ i.total }}</p>
+        {% else %}
+            <p><a style="font-weight: bolder;">Total:</a> </p>
+        {% endif %}
+
+        {% if i.forma_pagamento %}
+            <p><a style="font-weight: bolder;">Forma de Pagamento:</a> {{ i.forma_pagamento }}</p>
+        {% else %}
+            <p>Forma de Pagamento:</p>
+        {% endif %}
+
+        {% if i.observacoes %}
+            <p><a style="font-weight: bolder;">Observações:</a> {{ i.observacoes }}</p>
+        {% else %}
+            <p><a style="font-weight: bolder;">Observações:</a> </p>
+        {% endif %}
+
+
+        <p><button class="btn btn-secondary" onclick="location.href='/atualiza_rotativo/{{ i.id }}'">Editar</button>
+            <button class="btn btn-danger" onclick="location.href='/exclua_rotativo/{{ i.id }}">Excluir</button></p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    </br><button class="btn btn-secondary" onclick="location.href='/'">Voltar</button>
+
+{% endblock %}

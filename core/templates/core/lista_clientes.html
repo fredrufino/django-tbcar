@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Clientes
+{% endblock %}
+
+{% block main %}
+    <h3>Lista de Clientes</h3>
+    {% for i in dados %}
+    Nome: {{ i.nome }}<br>
+
+    {% if i.endereco %}
+        Endereço: {{ i.endereco }}<br>
+    {% else %}
+        Endereço: <br>
+    {% endif %}
+
+    {% if i.complemento %}
+        Complemento: {{ i.complemento }}<br>
+    {% else %}
+        Complemento: <br>
+    {% endif %}
+
+    {% if i.bairro %}
+        Bairro: {{ i.bairro }}<br>
+    {% else %}
+        Bairro: <br>
+    {% endif %}
+
+    {% if i.cidade %}
+        Cidade: {{ i.cidade }}<br>
+    {% else %}
+        Cidade: <br>
+    {% endif %}
+
+    {% if i.cep %}
+        CEP: {{ i.cep }}<br>
+    {% else %}
+        CEP: <br>
+    {% endif %}
+
+    E-mail: {{ i.email }}<br><br>
+
+    {% if i.foto %}
+        <img src="{{ i.foto.url }}" width="200"> <br>
+    {% else%}
+        <img src="{% static 'img/perfil_generico.png' %}" width="200"> <br>
+    {% endif %}
+
+<a href="/altera_cliente/{{ i.id }}">Editar</a>
+<a href="/exclua_cliente/{{ i.id }}">Excluir</a> <br>
+    ------------------------------------------------<br>
+
+    {% endfor %}
+
+    <button onclick="location.href='/'">Voltar</button>
+
+{% endblock %}

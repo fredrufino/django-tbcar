@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Tabelas
+{% endblock %}
+
+    {% block main %}
+     <h3>Lista Tabela</h3>
+        {% for i in dados %}
+        Descrição: {{ i.descricao }}<br>
+
+        Valor: {{ i.valor }}<br>
+
+
+    <a href="/altera_tabelas/{{ i.id }}">Editar</a>
+    <a href="/exclua_tabelas/{{ i.id }}">Excluir</a> <br>
+------------------------------------------------<br>
+
+    {% endfor %}
+
+    <button onclick="location.href='/'">Voltar</button>
+
+{% endblock %}
+

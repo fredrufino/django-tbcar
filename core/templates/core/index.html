@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    TBcar-Estacionamento
+{% endblock %}
+
+{% block main %}
+    <h2>TBcar - Estacionamento</h2>
+    <a href="/">Home</a> &nbsp;
+    <a href="/cadastro_cliente/">Cadastro Cliente</a>&nbsp;
+    <a href="/cadastro_veiculo/">Cadastro Veiculo</a>&nbsp;
+    <a href="/cadastro_fabricante/">Cadastro Fabricante</a>&nbsp;
+    <a href="/cadastro_rotativo/">Cadastro Rotativo</a>
+    <a href="/cadastro_mensalista/">Cadastro Mensalista</a>
+    <a href="/cadastro_tabelas/">Cadastro Tabelas</a>&nbsp;
+    <a href="/lista_clientes/">Lista Clientes</a>&nbsp;
+    <a href="/lista_veiculos/">Lista Veiculos</a>&nbsp;
+    <a href="/lista_fabricantes/">Lista Fabricantes</a>&nbsp;
+    <a href="/lista_rotativo/">Lista Rotativo</a>
+    <a href="/lista_mensalista/">Lista Mensalista</a>
+    <a href="/lista_tabelas/">Lista Tabelas</a>&nbsp;
+
+
+{% if user.get_username %}
+
+    (Usuário: {{user.get_username}} |
+        <a href="/admin/">Admin</a> &nbsp;
+        <a href="/accounts/logout/">logout</a>) <br>
+
+{% else %}
+    (Usuário não autenticado |
+        <a href="/admin/">Admin</a>&nbsp;
+        <a href="/accounts/login/">Login</a>
+        <a href="/accounts/registrar/">Registrar</a>)    <br>
+
+{% endif %}
+
+    <img src="{% static 'img/fundo.png'%}" width="600">
+
+{% endblock %}
